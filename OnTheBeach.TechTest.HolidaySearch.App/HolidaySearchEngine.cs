@@ -36,6 +36,6 @@ public class HolidaySearchEngine : IHolidaySearchEngine
             searchResults.Add(new HolidaySearchResult { Flight = matchedFlights.First(), Hotel = matchedHotel});
         }
 
-        return searchResults.OrderByDescending( h => h.Flight.Price + (h.Hotel.PricePerNight * holidayRequirements.Duration) );
+        return searchResults.OrderBy( h => h.Flight.Price + (h.Hotel.PricePerNight * holidayRequirements.Duration) );
     }
 }

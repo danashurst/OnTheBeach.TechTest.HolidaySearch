@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using OnTheBeach.TechTest.HolidaySearch.App.Features.HotelSearch;
 using OnTheBeach.TechTest.HolidaySearch.App.Models;
@@ -28,7 +29,7 @@ public class HotelSearchTests
         // Act
         var holidayRequirements = new HolidayRequirements
         {
-            DepartureAirport = "MAN",
+            DepartureAirports = new List<string> {"MAN"},
             DestinationAirport = "AGP",
             DepartureDate = new DateTime(2023, 7, 1),
             Duration = 7

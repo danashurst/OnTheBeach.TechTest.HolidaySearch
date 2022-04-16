@@ -6,11 +6,18 @@ public class FlightSearchEngine : IFlightSearchEngine
 {
     public IEnumerable<Flight> SearchFlights(IEnumerable<Flight> availableFlights, HolidayRequirements requirements)
     {
-        var flightCandidates = availableFlights
-            .Where(f => f.From == requirements.DepartureAirport)
-            .Where(f => f.To == requirements.DestinationAirport)
-            .Where(f => f.DepartureDate == requirements.DepartureDate);
+        var flightCandidates = new List<Flight>();
+        var availableFlightList = availableFlights.ToList();
 
-        return flightCandidates.OrderByDescending(f => f.Price);
+        foreach (var departingAirport in requirements.DepartureAirports)
+        {
+            flightCandidates.AddRange(availableFlightList
+                .Where(f => f.From == departingAirport)
+                .Where(f => f.To == requirements.DestinationAirport)
+                .Where(f => f.DepartureDate == requirements.DepartureDate)
+            );
+        }
+        
+        return flightCandidates.OrderBy(f => f.Price);
     }
 }
