@@ -1,4 +1,5 @@
-using System.Text.Json.Serialization;
+using Newtonsoft.Json;
+using OnTheBeach.TechTest.HolidaySearch.App.Utils;
 
 namespace OnTheBeach.TechTest.HolidaySearch.App.Models;
 
@@ -10,6 +11,7 @@ public class Flight
     public string To { get; set; }
     public int Price { get; set; }
 
-    [JsonPropertyName("departure_date")]
-    public string DepartureDate { get; set; }
+    [JsonProperty("departure_date")]
+    [JsonConverter(typeof(CustomDateTimeConverter))]
+    public DateTime DepartureDate { get; set; }
 }

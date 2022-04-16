@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using OnTheBeach.TechTest.HolidaySearch.App.Utils;
 
 namespace OnTheBeach.TechTest.HolidaySearch.App.Models;
 
@@ -8,7 +9,8 @@ public class Hotel
     public string Name { get; set; }
 
     [JsonProperty("arrival_date")]
-    public string ArrivalDate { get; set; }
+    [JsonConverter(typeof(CustomDateTimeConverter))]
+    public DateTime ArrivalDate { get; set; }
     
     [JsonProperty("price_per_night")]
     public int PricePerNight { get; set; }
