@@ -20,7 +20,7 @@ public class FlightSearchTests
     }
     
     [Fact]
-    public void ShouldMatchTheCorrectFlightForCustomer()
+    public void ShouldMatchTheCorrectFlightForCustomer1()
     {
         // Arrange
         var availableFlights = _dataLoader.GetFlights();
