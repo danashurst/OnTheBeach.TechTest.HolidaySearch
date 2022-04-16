@@ -46,27 +46,4 @@ public class HolidaySearchTests
         matchedHolidays.First()?.Flight.Id.ShouldBe(2);
         matchedHolidays.First()?.Hotel.Id.ShouldBe(9);
     }
-    
-    [Fact]
-    public void ShouldMatchTheCorrectHolidayForCustomer2()
-    {
-        // Arrange
-        var availableFlights = _dataLoader.GetFlights();
-        var availableHotels = _dataLoader.GetHotels();
-        
-        var holidayRequirements = new HolidayRequirements
-        {
-            DepartureAirports = new List<string>(),
-            DestinationAirport = "AGP",
-            DepartureDate = new DateTime(2023, 7, 1),
-            Duration = 7
-        };
-
-        // Act
-        var matchedHolidays = _holidaySearchEngine.SearchHolidays(availableFlights, availableHotels, holidayRequirements).ToList();
-
-        // Assert
-        matchedHolidays.First()?.Flight.Id.ShouldBe(2);
-        matchedHolidays.First()?.Hotel.Id.ShouldBe(9);
-    }
 }
