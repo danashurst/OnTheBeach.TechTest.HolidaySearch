@@ -61,4 +61,25 @@ public class HotelSearchTests
         // Assert
         matchedHotels.First().Id.ShouldBe(5);
     }
+    
+    [Fact]
+    public void ShouldMatchCorrectHotelForCustomer3()
+    {
+        // Arrange
+        var availableHotels = _dataLoader.GetHotels();
+        
+        // Act
+        var holidayRequirements = new HolidayRequirements
+        {
+            DepartureAirports = new List<string>(),
+            DestinationAirport = "LPA",
+            DepartureDate = new DateTime(2022, 11, 10),
+            Duration = 14
+        };
+
+        var matchedHotels = _hotelSearchEngine.SearchHotels(availableHotels, holidayRequirements);
+
+        // Assert
+        matchedHotels.First().Id.ShouldBe(6);
+    }
 }
