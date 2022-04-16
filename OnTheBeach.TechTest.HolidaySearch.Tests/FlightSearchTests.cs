@@ -60,4 +60,24 @@ public class FlightSearchTests
         // Assert
         flightMatches.First().Id.ShouldBe(6);
     }
+    
+    [Fact]
+    public void ShouldMatchTheCorrectFlightForCustomer3()
+    {
+        // Arrange
+        var availableFlights = _dataLoader.GetFlights();
+        
+        var holidayRequirements = new HolidayRequirements
+        {
+            DepartureAirports = new List<string> {},
+            DestinationAirport = "LPA",
+            DepartureDate = new DateTime(2022, 11, 10)
+        };
+
+        // Act
+        var flightMatches = _flightSearchEngine.SearchFlights(availableFlights, holidayRequirements);
+        
+        // Assert
+        flightMatches.First().Id.ShouldBe(7);
+    }
 }

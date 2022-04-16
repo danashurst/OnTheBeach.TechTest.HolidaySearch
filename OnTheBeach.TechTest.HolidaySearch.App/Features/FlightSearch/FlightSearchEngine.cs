@@ -9,15 +9,25 @@ public class FlightSearchEngine : IFlightSearchEngine
         var flightCandidates = new List<Flight>();
         var availableFlightList = availableFlights.ToList();
 
-        foreach (var departingAirport in requirements.DepartureAirports)
+        if (requirements.DepartureAirports.Any())
+        {
+            foreach (var departingAirport in requirements.DepartureAirports)
+            {
+                flightCandidates.AddRange(availableFlightList
+                    .Where(f => f.From == departingAirport)
+                    .Where(f => f.To == requirements.DestinationAirport)
+                    .Where(f => f.DepartureDate == requirements.DepartureDate)
+                );
+            }
+        }
+        else
         {
             flightCandidates.AddRange(availableFlightList
-                .Where(f => f.From == departingAirport)
                 .Where(f => f.To == requirements.DestinationAirport)
                 .Where(f => f.DepartureDate == requirements.DepartureDate)
             );
         }
-        
+
         return flightCandidates.OrderBy(f => f.Price);
     }
 }
