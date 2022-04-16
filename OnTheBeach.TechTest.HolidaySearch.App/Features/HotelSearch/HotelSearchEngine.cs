@@ -11,6 +11,6 @@ public class HotelSearchEngine : IHotelSearchEngine
             .Where(h => h.Nights == holidayRequirements.Duration)
             .Where(h => h.ArrivalDate == holidayRequirements.DepartureDate);
 
-        return hotelCandidates.OrderByDescending(h => h.PricePerNight);
+        return hotelCandidates.OrderBy(h => h.PricePerNight);
     }
 }
