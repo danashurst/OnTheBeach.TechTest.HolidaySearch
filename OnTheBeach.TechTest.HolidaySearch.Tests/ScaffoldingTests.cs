@@ -5,8 +5,12 @@ namespace OnTheBeach.TechTest.HolidaySearch.Tests;
 public class UnitTest1
 {
     [Fact]
-    public void Test1()
+    public void ShouldLoadFlightsFromJsonData()
     {
+        // Arrange
 
+        // Act
+
+        // Assert
     }
 }
