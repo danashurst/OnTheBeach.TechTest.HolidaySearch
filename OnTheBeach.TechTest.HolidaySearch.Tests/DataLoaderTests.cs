@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using OnTheBeach.TechTest.HolidaySearch.App;
 using OnTheBeach.TechTest.HolidaySearch.App.Models;
+using OnTheBeach.TechTest.HolidaySearch.App.Utils.DataLoader;
 using Shouldly;
 using Xunit;
 

@@ -1,6 +1,6 @@
 using OnTheBeach.TechTest.HolidaySearch.App.Models;
 
-namespace OnTheBeach.TechTest.HolidaySearch.App;
+namespace OnTheBeach.TechTest.HolidaySearch.App.Utils.DataLoader;
 
 public interface IDataLoader
 {
