@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using OnTheBeach.TechTest.HolidaySearch.App;
+using OnTheBeach.TechTest.HolidaySearch.App.Features.FlightSearch;
+using OnTheBeach.TechTest.HolidaySearch.App.Features.HotelSearch;
 using OnTheBeach.TechTest.HolidaySearch.App.Models;
 using OnTheBeach.TechTest.HolidaySearch.App.Utils.DataLoader;
 using Shouldly;
@@ -12,11 +15,13 @@ public class HolidaySearchTests
 {
     private readonly IDataLoader _dataLoader;
     private readonly IHolidaySearchEngine _holidaySearchEngine;
-    
-    public HolidaySearchTests(IDataLoader dataLoader, IHolidaySearchEngine holidaySearchEngine)
+
+    public HolidaySearchTests()
     {
-        _dataLoader = dataLoader;
-        _holidaySearchEngine = holidaySearchEngine;
+        _dataLoader = new DataLoader();
+        FlightSearchEngine flightSearchEngine = new ();
+        HotelSearchEngine hotelSearchEngine = new ();
+        _holidaySearchEngine = new HolidaySearchEngine(hotelSearchEngine, flightSearchEngine);
     }
 
     [Fact]
@@ -25,7 +30,7 @@ public class HolidaySearchTests
         // Arrange
         var availableFlights = _dataLoader.GetFlights();
         var availableHotels = _dataLoader.GetHotels();
-
+        
         var holidayRequirements = new HolidayRequirements
         {
             DepartureAirport = "MAN",
