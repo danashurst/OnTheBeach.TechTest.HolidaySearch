@@ -38,6 +38,5 @@ public class HotelSearchTests
 
         // Assert
         matchedHotels.First().Id.ShouldBe(9);
-
     }
 }
