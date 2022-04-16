@@ -28,9 +28,8 @@ public class FlightSearchTests
         var holidayRequirements = new HolidayRequirements
         {
             DepartureAirport = "MAN",
-            DestinationAirport = "APG",
-            DepartureDate = new DateTime(2023, 7, 1),
-            Duration = 7
+            DestinationAirport = "AGP",
+            DepartureDate = new DateTime(2023, 7, 1)
         };
 
         // Act
