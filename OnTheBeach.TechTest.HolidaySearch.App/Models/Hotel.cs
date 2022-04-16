@@ -1,3 +1,5 @@
+using Newtonsoft.Json;
+
 namespace OnTheBeach.TechTest.HolidaySearch.App.Models;
 
 public class Hotel
