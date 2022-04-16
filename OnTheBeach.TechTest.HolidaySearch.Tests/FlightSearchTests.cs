@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Linq;
 using OnTheBeach.TechTest.HolidaySearch.App;
 using OnTheBeach.TechTest.HolidaySearch.App.Features.FlightSearch;
 using OnTheBeach.TechTest.HolidaySearch.App.Models;
+using Shouldly;
 using Xunit;
 
 namespace OnTheBeach.TechTest.HolidaySearch.Tests;
@@ -22,7 +24,6 @@ public class FlightSearchTests
     {
         // Arrange
         var availableFlights = _dataLoader.GetFlights();
-        var availableHotels = _dataLoader.GetHotels();
         
         var holidayRequirements = new HolidayRequirements
         {
@@ -33,9 +34,9 @@ public class FlightSearchTests
         };
 
         // Act
-        var flightMatches = _flightSearchEngine.SearchFlight(availableFlights, availableHotels, holidayRequirements);
+        var flightMatches = _flightSearchEngine.SearchFlights(availableFlights, holidayRequirements);
         
         // Assert
-        flightMatches.FirstOrDefault(f => f.Id == 2);
+        flightMatches.First().Id.ShouldBe(2);
     }
 }
