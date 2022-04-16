@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace OnTheBeach.TechTest.HolidaySearch.App.Models;
 
 public class Flight
